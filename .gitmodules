@@ -1,0 +1,7 @@
+[submodule "sspanel/SSPanel-Uim"]
+	path = sspanel/SSPanel-Uim
+	url = https://github.com/Anankke/SSPanel-Uim.git
+[submodule "sspanel_mod/shadowsocks-mod"]
+	path = sspanel_mod/shadowsocks-mod
+	url = https://github.com/Anankke/shadowsocks-mod.git
+	branch = 3.5.1
