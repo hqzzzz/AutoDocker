@@ -1,0 +1,19 @@
+FROM python:3.8-alpine as base
+
+WORKDIR /usr/src/sspanel
+COPY ./EHCO1996/. /usr/src/sspanel
+
+RUN	pip install -U pip
+
+RUN apk add --update --no-cache mariadb-connector-c-dev tzdata 
+RUN apk add --no-cache --virtual .build-deps mariadb-dev libgcc gcc musl-dev libffi-dev  make cargo
+	# TODO workaround start
+RUN pip install --no-cache-dir poetry django-debug-toolbar \
+    && poetry config virtualenvs.create false \
+    && poetry install  --no-dev --no-interaction --no-ansi \
+	# TODO workaround end
+	  && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+	  && echo "Asia/Shanghai" > /etc/timezone
+
+ENV DJANGO_ENV=ci
+RUN python manage.py collectstatic --noinput

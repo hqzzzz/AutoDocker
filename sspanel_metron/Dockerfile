@@ -5,15 +5,15 @@ COPY . /usr/src/sspanel
 
 VOLUME [ "/var/www" ]
 
-WORKDIR /usr/src/sspanel/SSPanel-Uim
+WORKDIR /usr/src/sspanel/sspm
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y curl libzip-dev git supervisor vim nginx cron ca-certificates mariadb-client && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/cache/apt/* && \
     docker-php-ext-install zip pdo pdo_mysql opcache mysqli bcmath && \
-    mv ../.config.example.php config/.config.php && \
+    cp config/.config.example.php config/.config.php && \
     mv config/appprofile.example.php config/appprofile.php && \
-    #mv ../supervisord.conf /etc/supervisor/ && \
+    mv ../supervisord.conf /etc/supervisor/ && \
     mv ../sites.conf /etc/nginx/sites-enabled/default && \
     mv ../docker-entrypoint.sh /usr/local/bin/ && \
     mkdir -p /var/www/html && \

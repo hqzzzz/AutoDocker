@@ -1,7 +1,13 @@
-[submodule "sspanel/SSPanel-Uim"]
+[submodule "sspanel"]
 	path = sspanel/SSPanel-Uim
 	url = https://github.com/Anankke/SSPanel-Uim.git
-[submodule "sspanel_mod/shadowsocks-mod"]
+[submodule "shadowsocks-mod"]
 	path = sspanel_mod/shadowsocks-mod
 	url = https://github.com/Anankke/shadowsocks-mod.git
 	branch = 3.5.1
+[submodule "pysspanel/EHCO1996"]
+	path = pysspanel/EHCO1996
+	url = https://github.com/Ehco1996/django-sspanel.git
+[submodule "sspanel_metron/sspm"]
+	path = sspanel_metron/sspm
+	url = https://github.com/BobCoderS9/SSPanel-Metron.git
